@@ -12,9 +12,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const title = "VintedLens Dashboard";
+const description = "Inventario y ventas de LoopVTG en Vinted — métricas y sugerencias de IA por artículo";
+
 export const metadata: Metadata = {
-  title: "VintedLens Dashboard",
-  description: "Inventario y ventas de LoopVTG en Vinted",
+  metadataBase: new URL("https://vintedlens-dashboard.vercel.app"),
+  title,
+  description,
+  openGraph: { title, description, type: "website" },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
