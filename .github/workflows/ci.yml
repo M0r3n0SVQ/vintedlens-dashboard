@@ -16,7 +16,15 @@ jobs:
           node-version: "22"
           cache: "npm"
 
-      - run: npm ci
+      # npm ci falla en este runner (aunque en local, tras regenerar
+      # el lockfile, sí pasa): @tailwindcss/oxide-wasm32-wasi
+      # empaqueta (bundleDependencies) versiones de @emnapi/* que la
+      # validación estricta de `npm ci` no da por buenas en Linux. Es
+      # un paquete opcional (fallback WASM que ni Windows ni Linux
+      # x64 llegan a usar, porque ambos tienen binario nativo), así
+      # que no afecta a qué se instala de verdad — `npm install` no
+      # aplica esa misma validación estricta y evita el problema.
+      - run: npm install
 
       - name: Lint (eslint)
         run: npm run lint
