@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# regenerado automáticamente por `next dev`, no es documentación real
+AGENTS.md
+CLAUDE.md
