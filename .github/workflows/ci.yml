@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Lint (eslint)
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      # force-dynamic evita que el build intente ejecutar el fetch a
+      # la API real, así que no hace falta una VINTEDLENS_API_KEY de
+      # verdad aquí — solo que las variables existan para que
+      # process.env no dispare ninguna comprobación en build time.
+      - name: Build
+        run: npm run build
+        env:
+          VINTEDLENS_API_ENDPOINT: "https://example.invalid/"
+          VINTEDLENS_API_KEY: "ci-placeholder"

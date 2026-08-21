@@ -1,5 +1,7 @@
 # VintedLens Dashboard
 
+[![CI](https://github.com/M0r3n0SVQ/vintedlens-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/M0r3n0SVQ/vintedlens-dashboard/actions/workflows/ci.yml)
+
 Frontend en Next.js que consume el pipeline serverless de
 [VintedLens](https://github.com/M0r3n0SVQ/VintedLens) como backend:
 lee las métricas de inventario/ventas de LoopVTG (rotación, precio
@@ -65,6 +67,19 @@ Variables necesarias en `.env.local` (no versionado):
 Pensado para Vercel, conectando este repo directamente (import
 project en vercel.com) y configurando las mismas dos variables de
 entorno de arriba en el proyecto de Vercel — no en el repo.
+
+## CI/CD
+
+`.github/workflows/ci.yml` corre en cada push/PR: `eslint`,
+`tsc --noEmit` y `next build` (con variables de entorno de relleno —
+`force-dynamic` evita que el build intente llamar a la API real, así
+que no hace falta una `VINTEDLENS_API_KEY` de verdad en CI). Este
+repo no tenía CI hasta ahora, a diferencia del backend; se añadió
+para no dejar pasar un `npm run build` roto sin darse cuenta antes
+del deploy en Vercel.
+
+Dependabot (`.github/dependabot.yml`) abre PRs semanales para
+actualizar dependencias de npm y las GitHub Actions de los workflows.
 
 ## Stack técnico
 
