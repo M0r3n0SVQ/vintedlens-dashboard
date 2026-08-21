@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,13 +23,21 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description },
 };
 
+// Color de la barra del navegador en móvil — sin esto, algunos
+// navegadores la pintan blanca por defecto pese a que la app fuerza
+// tema oscuro, dando la misma sensación de "algo no cuadra" que el
+// bug de fondo que arregló globals.css.
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-neutral-950 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.12),transparent)]">
+      <body className="min-h-full flex flex-col bg-neutral-950 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.12),transparent)] font-sans text-neutral-200">
         {children}
       </body>
     </html>
