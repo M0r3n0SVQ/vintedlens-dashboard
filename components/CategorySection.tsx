@@ -23,11 +23,14 @@ export function CategorySection({ categories, currency }: CategorySectionProps) 
   return (
     <div>
       <div className="mb-3 flex items-center justify-between gap-4">
-        <h2 className="text-lg font-medium text-neutral-200">Por categoría</h2>
+        <div>
+          <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase">Detalle</p>
+          <h2 className="text-lg font-medium text-neutral-100">Por categoría</h2>
+        </div>
         <select
           value={selected}
           onChange={(event) => setSelected(event.target.value)}
-          className="rounded-md border border-neutral-700 bg-neutral-900 px-3 py-1.5 text-sm text-neutral-200 transition-colors hover:border-neutral-600 focus:border-indigo-700 focus:outline-none"
+          className="rounded-lg border border-white/10 bg-neutral-900/70 px-3 py-1.5 text-sm text-neutral-200 backdrop-blur-sm transition-colors hover:border-white/20 focus:border-indigo-600 focus:outline-none"
         >
           <option value="all">Todas las categorías</option>
           {categoryNames.map((name) => (

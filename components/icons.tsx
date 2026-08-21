@@ -50,6 +50,20 @@ export function CoinIcon({ className }: IconProps) {
   );
 }
 
+export function LogoMark({ className }: IconProps) {
+  return (
+    <div
+      className={`flex items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 shadow-lg shadow-indigo-950/50 ${className ?? ""}`}
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={1.75} className="h-1/2 w-1/2">
+        <circle cx="11" cy="11" r="6.5" strokeLinecap="round" />
+        <path d="m20 20-3.8-3.8" strokeLinecap="round" />
+        <circle cx="11" cy="11" r="2.25" fill="white" stroke="none" />
+      </svg>
+    </div>
+  );
+}
+
 export function SparkleIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>

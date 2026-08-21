@@ -19,7 +19,7 @@ interface MetricCardProps {
 
 export function MetricCard({ label, value, hint, icon, tone = "neutral" }: MetricCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/60 p-5 transition-colors hover:border-neutral-700">
+    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/70 p-5 shadow-lg shadow-black/10 backdrop-blur-sm transition-all hover:border-white/20 hover:shadow-black/30">
       <div className="flex items-start justify-between gap-3">
         <p className="text-sm text-neutral-400">{label}</p>
         {icon && (
