@@ -27,7 +27,7 @@ export function CategorySection({ categories, currency }: CategorySectionProps) 
         <select
           value={selected}
           onChange={(event) => setSelected(event.target.value)}
-          className="rounded-md border border-neutral-700 bg-neutral-900 px-3 py-1.5 text-sm text-neutral-200"
+          className="rounded-md border border-neutral-700 bg-neutral-900 px-3 py-1.5 text-sm text-neutral-200 transition-colors hover:border-neutral-600 focus:border-indigo-700 focus:outline-none"
         >
           <option value="all">Todas las categorías</option>
           {categoryNames.map((name) => (

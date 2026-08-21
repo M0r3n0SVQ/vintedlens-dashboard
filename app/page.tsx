@@ -1,5 +1,6 @@
 import { AiSummaryCard } from "@/components/AiSummaryCard";
 import { CategorySection } from "@/components/CategorySection";
+import { CheckIcon, CoinIcon, RefreshIcon, TagIcon } from "@/components/icons";
 import { MetricCard } from "@/components/MetricCard";
 import { getMetrics } from "@/lib/api";
 
@@ -43,14 +44,29 @@ export default async function Home() {
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-16">
-      <header className="mb-10">
-        <h1 className="text-2xl font-semibold text-neutral-50">VintedLens</h1>
-        <p className="mt-1 text-neutral-400">Inventario y ventas de LoopVTG en Vinted</p>
+      <header className="mb-10 flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight text-neutral-50">VintedLens</h1>
+          <p className="mt-1 text-neutral-400">Inventario y ventas de LoopVTG en Vinted</p>
+        </div>
+        <span className="mt-1 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-900/60 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          Datos en vivo
+        </span>
       </header>
 
       <section className="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <MetricCard label="Artículos" value={String(overall.total_count)} />
-        <MetricCard label="Vendidos" value={String(overall.sold_count)} />
+        <MetricCard
+          label="Artículos"
+          value={String(overall.total_count)}
+          icon={<TagIcon className="h-full w-full" />}
+        />
+        <MetricCard
+          label="Vendidos"
+          value={String(overall.sold_count)}
+          icon={<CheckIcon className="h-full w-full" />}
+          tone="emerald"
+        />
         <MetricCard
           label="Rotación"
           value={
@@ -58,6 +74,8 @@ export default async function Home() {
               ? "—"
               : `${(overall.sell_through_rate * 100).toFixed(0)}%`
           }
+          icon={<RefreshIcon className="h-full w-full" />}
+          tone="violet"
         />
         <MetricCard
           label="Precio medio"
@@ -66,6 +84,8 @@ export default async function Home() {
               ? "—"
               : `${overall.avg_listing_price.toFixed(2)} ${currency}`
           }
+          icon={<CoinIcon className="h-full w-full" />}
+          tone="amber"
         />
       </section>
 
