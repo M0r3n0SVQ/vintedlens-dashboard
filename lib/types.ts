@@ -23,7 +23,21 @@ export interface MetricsSnapshot {
   by_category: Record<string, CategoryMetrics>;
 }
 
+export interface CategorySuggestion {
+  category: string;
+  suggestion: string;
+}
+
+export interface AiSummary {
+  generated_at: string;
+  source_key: string;
+  compared_to: string | null;
+  summary: string;
+  suggestions: CategorySuggestion[];
+}
+
 export interface MetricsResponse {
   latest: MetricsSnapshot | null;
   history: MetricsSnapshot[];
+  ai_summary: AiSummary | null;
 }

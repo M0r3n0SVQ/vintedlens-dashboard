@@ -1,4 +1,5 @@
-import { CategoryTable } from "@/components/CategoryTable";
+import { AiSummaryCard } from "@/components/AiSummaryCard";
+import { CategorySection } from "@/components/CategorySection";
 import { MetricCard } from "@/components/MetricCard";
 import { getMetrics } from "@/lib/api";
 
@@ -38,6 +39,7 @@ export default async function Home() {
   }
 
   const { overall, by_category, currency, generated_at } = data.latest;
+  const { ai_summary } = data;
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-16">
@@ -67,9 +69,14 @@ export default async function Home() {
         />
       </section>
 
+      {ai_summary && (
+        <section className="mb-10">
+          <AiSummaryCard summary={ai_summary} />
+        </section>
+      )}
+
       <section className="mb-6">
-        <h2 className="mb-3 text-lg font-medium text-neutral-200">Por categoría</h2>
-        <CategoryTable categories={by_category} currency={currency} />
+        <CategorySection categories={by_category} currency={currency} />
       </section>
 
       <footer className="mt-10 text-xs text-neutral-500">
