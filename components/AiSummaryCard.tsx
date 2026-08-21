@@ -11,11 +11,11 @@ export function AiSummaryCard({ summary }: { summary: AiSummary }) {
       <p className="text-neutral-200">{summary.summary}</p>
 
       {summary.suggestions.length > 0 && (
-        <ul className="mt-4 space-y-2 border-t border-indigo-900/40 pt-4">
+        <ul className="mt-4 space-y-3 border-t border-indigo-900/40 pt-4">
           {summary.suggestions.map((item) => (
-            <li key={item.category} className="text-sm text-neutral-300">
-              <span className="font-medium capitalize text-neutral-100">{item.category}:</span>{" "}
-              {item.suggestion}
+            <li key={item.item_id} className="text-sm text-neutral-300">
+              <span className="font-medium text-neutral-100">{item.title}</span>
+              <p className="mt-0.5 text-neutral-400">{item.suggestion}</p>
             </li>
           ))}
         </ul>

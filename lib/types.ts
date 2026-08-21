@@ -23,8 +23,9 @@ export interface MetricsSnapshot {
   by_category: Record<string, CategoryMetrics>;
 }
 
-export interface CategorySuggestion {
-  category: string;
+export interface ItemSuggestion {
+  item_id: string;
+  title: string;
   suggestion: string;
 }
 
@@ -33,7 +34,7 @@ export interface AiSummary {
   source_key: string;
   compared_to: string | null;
   summary: string;
-  suggestions: CategorySuggestion[];
+  suggestions: ItemSuggestion[];
 }
 
 export interface MetricsResponse {

@@ -29,6 +29,20 @@ clave.
 Verificado manualmente: la clave no aparece en el HTML renderizado ni
 en ninguna petición de red visible desde el navegador.
 
+## Qué muestra
+
+- **Métricas por categoría**: precio medio de listado/venta, días
+  medios hasta la venta, sell-through rate y aviso de rotación baja,
+  con filtro por categoría (`CategorySection`, client component).
+- **Historial**: hasta 10 informes anteriores, para ver evolución.
+- **Resumen de IA** (`AiSummaryCard`): si la Lambda de reporting de
+  VintedLens ya se ha ejecutado, la API expone su último resumen en
+  `ai_summary` (puede ser `null` si aún no hay ninguno). El dashboard
+  lo pinta como un resumen en texto más una lista de sugerencias
+  **por artículo concreto** (título real, no categoría genérica) —
+  el mismo cambio que se hizo en el backend para que las sugerencias
+  no repitan cosas que el título ya tiene.
+
 ## Desarrollo local
 
 Requiere el backend de VintedLens ya desplegado (ver ese repo).
