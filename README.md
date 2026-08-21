@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VintedLens Dashboard
 
-## Getting Started
+Frontend en Next.js que consume el pipeline serverless de
+[VintedLens](https://github.com/M0r3n0SVQ/VintedLens) como backend:
+lee las métricas de inventario/ventas de LoopVTG (rotación, precio
+medio, tiempo en catálogo) a través de su API HTTP y las muestra en
+un dashboard de solo lectura.
 
-First, run the development server:
+Proyecto de portfolio — Fase 5 (opcional) de VintedLens, reutilizando
+patrones de **Plendu** (Next.js + Vercel) para conectar ambos
+proyectos en vez de dejarlos como piezas sueltas.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Arquitectura
+
+```
+Navegador → Next.js (Vercel) → [server-side] → API Gateway → Lambda → S3 (VintedLens)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+El dashboard **nunca** llama a la API desde el navegador: todo el
+fetch ocurre en Server Components, en el servidor de Vercel. La clave
+de la API (`VINTEDLENS_API_KEY`) vive solo como variable de entorno
+de servidor y no lleva el prefijo `NEXT_PUBLIC_`, así que Next.js no
+la incluye en el bundle de cliente. `lib/api.ts` importa
+[`server-only`](https://www.npmjs.com/package/server-only), que hace
+fallar el build si ese módulo se importa alguna vez desde un Client
+Component — un error de build en vez de una fuga silenciosa de la
+clave.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Verificado manualmente: la clave no aparece en el HTML renderizado ni
+en ninguna petición de red visible desde el navegador.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Desarrollo local
 
-## Learn More
+Requiere el backend de VintedLens ya desplegado (ver ese repo).
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+cp .env.local.example .env.local   # rellena con los outputs de terraform
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Variables necesarias en `.env.local` (no versionado):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | De dónde sale |
+|---|---|
+| `VINTEDLENS_API_ENDPOINT` | `terraform output api_endpoint` en VintedLens |
+| `VINTEDLENS_API_KEY` | `terraform output -raw api_key` en VintedLens |
 
-## Deploy on Vercel
+## Despliegue
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Pensado para Vercel, conectando este repo directamente (import
+project en vercel.com) y configurando las mismas dos variables de
+entorno de arriba en el proyecto de Vercel — no en el repo.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Stack técnico
+
+Next.js (App Router, Server Components) · TypeScript estricto ·
+Tailwind CSS · Vercel
