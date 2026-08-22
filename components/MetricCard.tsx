@@ -23,7 +23,10 @@ export function MetricCard({ label, value, hint, icon, tone = "neutral" }: Metri
       <div className="flex items-start justify-between gap-3">
         <p className="text-sm text-neutral-400">{label}</p>
         {icon && (
-          <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${TONE_STYLES[tone]}`}>
+          <span
+            aria-hidden="true"
+            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${TONE_STYLES[tone]}`}
+          >
             <span className="h-4 w-4">{icon}</span>
           </span>
         )}

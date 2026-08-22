@@ -11,7 +11,9 @@ export function AiSummaryCard({ summary }: { summary: AiSummary }) {
       />
       <div className="mb-3 flex items-center gap-2">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-500/15 px-2.5 py-1 text-xs font-medium text-indigo-300">
-          <SparkleIcon className="h-3 w-3" />
+          <span aria-hidden="true">
+            <SparkleIcon className="h-3 w-3" />
+          </span>
           Resumen IA
         </span>
       </div>
