@@ -3,7 +3,7 @@ interface IconProps {
 }
 
 // Iconos inline (sin librería externa) para no añadir una dependencia
-// solo por 4 glifos estáticos — mismo criterio de "sin dependencias
+// solo por 4 glifos estáticos: mismo criterio de "sin dependencias
 // que no aporten" que el backend aplica a las Lambdas.
 
 export function TagIcon({ className }: IconProps) {

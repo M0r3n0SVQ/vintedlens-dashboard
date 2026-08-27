@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 const title = "VintedLens Dashboard";
-const description = "Inventario y ventas de LoopVTG en Vinted — métricas y sugerencias de IA por artículo";
+const description = "Inventario y ventas de LoopVTG en Vinted: métricas y sugerencias de IA por artículo";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://vintedlens-dashboard.vercel.app"),
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description },
 };
 
-// Color de la barra del navegador en móvil — sin esto, algunos
+// Color de la barra del navegador en móvil: sin esto, algunos
 // navegadores la pintan blanca por defecto pese a que la app fuerza
 // tema oscuro, dando la misma sensación de "algo no cuadra" que el
 // bug de fondo que arregló globals.css.

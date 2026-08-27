@@ -1,5 +1,5 @@
 // Paleta cíclica para identificar categorías visualmente (puntos en la
-// tabla, barras del gráfico) — determinista por orden alfabético, así
+// tabla, barras del gráfico), determinista por orden alfabético, así
 // una categoría siempre tiene el mismo color entre recargas sin tener
 // que guardar un mapeo a mano por cada una que aparezca en el CSV.
 const PALETTE = [

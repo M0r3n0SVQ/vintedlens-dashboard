@@ -6,7 +6,7 @@ interface CategoryChartProps {
 }
 
 // Gráfico de barras horizontales del mix de inventario por categoría
-// (recuento de artículos, no precio) — responde "¿en qué tengo
+// (recuento de artículos, no precio): responde "¿en qué tengo
 // metido el catálogo?" de un vistazo, complementario a la tabla de
 // abajo, que ya cubre el detalle de precio/rotación por categoría.
 export function CategoryChart({ categories }: CategoryChartProps) {

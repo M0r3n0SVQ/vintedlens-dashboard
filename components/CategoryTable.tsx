@@ -11,7 +11,7 @@ function formatDays(value: number | null): string {
 
 // Rojo/ámbar/verde en vez de un solo tono para que la tabla se lea de
 // un vistazo sin tener que comparar los números categoría a
-// categoría — el corte en 20/50% es el mismo umbral visual que ya
+// categoría: el corte en 20/50% es el mismo umbral visual que ya
 // usa "rotación baja" en el backend (low_sell_through_threshold).
 function rateTone(value: number): string {
   if (value < 0.2) return "bg-rose-500";

@@ -8,7 +8,7 @@ lee las métricas de inventario/ventas de LoopVTG (rotación, precio
 medio, tiempo en catálogo) a través de su API HTTP y las muestra en
 un dashboard de solo lectura.
 
-Proyecto de portfolio — Fase 5 (opcional) de VintedLens, reutilizando
+Proyecto de portfolio: Fase 5 (opcional) de VintedLens, reutilizando
 patrones de **Plendu** (Next.js + Vercel) para conectar ambos
 proyectos en vez de dejarlos como piezas sueltas.
 
@@ -25,7 +25,7 @@ de servidor y no lleva el prefijo `NEXT_PUBLIC_`, así que Next.js no
 la incluye en el bundle de cliente. `lib/api.ts` importa
 [`server-only`](https://www.npmjs.com/package/server-only), que hace
 fallar el build si ese módulo se importa alguna vez desde un Client
-Component — un error de build en vez de una fuga silenciosa de la
+Component: un error de build en vez de una fuga silenciosa de la
 clave.
 
 Verificado manualmente: la clave no aparece en el HTML renderizado ni
@@ -41,7 +41,7 @@ en ninguna petición de red visible desde el navegador.
   VintedLens ya se ha ejecutado, la API expone su último resumen en
   `ai_summary` (puede ser `null` si aún no hay ninguno). El dashboard
   lo pinta como un resumen en texto más una lista de sugerencias
-  **por artículo concreto** (título real, no categoría genérica) —
+  **por artículo concreto** (título real, no categoría genérica),
   el mismo cambio que se hizo en el backend para que las sugerencias
   no repitan cosas que el título ya tiene.
 
@@ -66,12 +66,12 @@ Variables necesarias en `.env.local` (no versionado):
 
 Pensado para Vercel, conectando este repo directamente (import
 project en vercel.com) y configurando las mismas dos variables de
-entorno de arriba en el proyecto de Vercel — no en el repo.
+entorno de arriba en el proyecto de Vercel, no en el repo.
 
 ## CI/CD
 
 `.github/workflows/ci.yml` corre en cada push/PR: `eslint`,
-`tsc --noEmit` y `next build` (con variables de entorno de relleno —
+`tsc --noEmit` y `next build` (con variables de entorno de relleno:
 `force-dynamic` evita que el build intente llamar a la API real, así
 que no hace falta una `VINTEDLENS_API_KEY` de verdad en CI). Este
 repo no tenía CI hasta ahora, a diferencia del backend; se añadió

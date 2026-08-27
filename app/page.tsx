@@ -106,7 +106,7 @@ export default async function Home() {
           <AiSummaryCard summary={ai_summary} />
         ) : (
           <div className="rounded-2xl border border-dashed border-white/10 p-6 text-sm text-neutral-500">
-            Todavía no hay resumen de IA — se genera en el próximo informe programado.
+            Todavía no hay resumen de IA. Se genera en el próximo informe programado.
           </div>
         )}
       </section>

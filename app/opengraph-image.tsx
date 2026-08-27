@@ -43,7 +43,7 @@ export default function OpengraphImage() {
         </div>
 
         <span style={{ marginTop: 32, fontSize: 34, color: "#a1a1aa", maxWidth: 900 }}>
-          Inventario y ventas de LoopVTG en Vinted — métricas y sugerencias de IA por artículo
+          Inventario y ventas de LoopVTG en Vinted: métricas y sugerencias de IA por artículo
         </span>
 
         <div style={{ display: "flex", gap: 16, marginTop: 52 }}>

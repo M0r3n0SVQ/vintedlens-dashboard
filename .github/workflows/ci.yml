@@ -22,7 +22,7 @@ jobs:
       # validación estricta de `npm ci` no da por buenas en Linux. Es
       # un paquete opcional (fallback WASM que ni Windows ni Linux
       # x64 llegan a usar, porque ambos tienen binario nativo), así
-      # que no afecta a qué se instala de verdad — `npm install` no
+      # que no afecta a qué se instala de verdad: `npm install` no
       # aplica esa misma validación estricta y evita el problema.
       - run: npm install
 
@@ -34,14 +34,14 @@ jobs:
       # solo genera al compilar (next-env.d.ts, .next/types/**),
       # como LayoutProps. `next build` ya tipa internamente (falla si
       # hay un error de tipos, no hace falta typescript.ignoreBuildErrors
-      # en next.config.ts) — así que un paso de tsc suelto aquí sería
+      # en next.config.ts), así que un paso de tsc suelto aquí sería
       # redundante y además rompería por un motivo que no es un error
       # real de tipos. `npm run typecheck` sigue existiendo para uso
       # local, donde next-env.d.ts ya existe de builds anteriores.
       #
       # force-dynamic evita que el build intente ejecutar el fetch a
       # la API real, así que no hace falta una VINTEDLENS_API_KEY de
-      # verdad aquí — solo que las variables existan para que
+      # verdad aquí, solo que las variables existan para que
       # process.env no dispare ninguna comprobación en build time.
       - name: Build
         run: npm run build

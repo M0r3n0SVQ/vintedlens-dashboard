@@ -5,7 +5,7 @@ export const contentType = "image/png";
 
 // Mismo glifo (lupa) que components/icons.tsx LogoMark, redibujado
 // aquí porque next/og (satori) no puede reutilizar JSX que dependa
-// de Tailwind — solo entiende estilos inline.
+// de Tailwind, solo entiende estilos inline.
 export default function Icon() {
   return new ImageResponse(
     (
